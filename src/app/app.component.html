@@ -1,0 +1,52 @@
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    Automoviles - CRUD
+  </a>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-title">
+              <h3>Formulario de Registro</h3>
+          </div>
+          <div class="form-group">
+            <input type="text" [(ngModel)]="selectedCars.nombre" placeholder="Ingrese nombre" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" [(ngModel)]="selectedCars.marca" placeholder="Ingrese marca" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" [(ngModel)]="selectedCars.pais" placeholder="Ingrese pais" class="form-control">
+          </div>
+          <button (click)="agregaroeditar()" class="btn btn-dark">
+            Enviar
+          </button> &nbsp;&nbsp;
+          <button *ngIf="selectedCars.id != 0" class="btn btn-danger"
+            (click)="eliminar()">
+            Eliminar
+          </button>
+        </div>
+      </div>
+      <br>
+      <h3 class="text-white">Lista de Automoviles</h3>
+      <h5 class="text-white">Seleccione un automóvil para eliminar o editar</h5>
+      <ul class="list-group">
+        <li *ngFor="let item of carrosArray"
+          class="list-group-item list-group-item-action"
+          (click)="editar(item)" [class.bg-danger]="item == selectedCars"
+          [class.active]="item == selectedCars"
+          >
+          <span class="badge badge-danger">
+              {{item.id}}</span>&nbsp;&nbsp;{{item.nombre}} - {{item.marca}} - {{item.pais}}
+        </li>
+      </ul>
+
+    </div>
+    <div class="col-md-4 mt-4">
+      <img width="300" src="https://s1.latercera.com/wp-content/uploads/2019/01/European-car-brands-logotypes-720x477.png" alt="Nissan">
+    </div>
+  </div> 
+</div>
